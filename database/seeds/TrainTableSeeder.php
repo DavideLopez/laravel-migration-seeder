@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Train;
+
 class TrainTableSeeder extends Seeder
 {
     /**
@@ -21,6 +23,7 @@ class TrainTableSeeder extends Seeder
                 'train_code' => '002100',
                 'train_length'=> 3,
                 'in_time' => rand(0,1),
+                'deleted' => rand(0,1),
             ],
             [
                 'company' => 'Italo',
@@ -31,8 +34,9 @@ class TrainTableSeeder extends Seeder
                 'train_code' => '0600',
                 'train_length'=> 3,
                 'in_time' => rand(0,1),
+                'deleted' => rand(0,1),
             ],
-        ]
+        ];
 
         foreach ($trains as $train) {
             $newTrain = new Train ();
@@ -44,6 +48,7 @@ class TrainTableSeeder extends Seeder
             $newTrain->train_code = $train ['train_code'];
             $newTrain->train_length = $train ['train_length'];
             $newTrain->in_time = $train ['in_time'];
+            $newTrain->deleted = $train ['deleted'];
 
             $newTrain->save();
             
